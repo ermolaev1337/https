@@ -7,12 +7,5 @@ services:
     volumes:
       - .:/usr/app/
     tty: true
-  nginx:
-    depends_on:
-      - https
-    tty: true
-    image: nginx:latest
-    volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf
     ports:
       - 80:80
