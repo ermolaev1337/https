@@ -1,15 +1,12 @@
-const fs = require('fs'),
-    http = require('http');
+const express = require('express');
+const path = require("path");
+const app = express();
+const PORT = 80;
 
-http.createServer(function (req, res) {
-    console.log(__dirname + req.url)
-    fs.readFile(__dirname + req.url, function (err,data) {
-        if (err) {
-            res.writeHead(404);
-            res.end(JSON.stringify(err));
-            return;
-        }
-        res.writeHead(200);
-        res.end(data);
-    });
-}).listen(80);
+app.use('/',express.static(path.join(__dirname,'/')));
+
+app.get('/', (req, res) => {
+    res.send('Hello World!');
+});
+
+app.listen(PORT, () => console.log(`Server listening on port: ${PORT}`));
