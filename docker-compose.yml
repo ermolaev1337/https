@@ -1,0 +1,11 @@
+version: '2'
+services:
+  https:
+    working_dir: /usr/app/
+    image: node:latest
+    command: npm run start
+    volumes:
+      - .:/usr/app/
+    tty: true
+    ports:
+      - "8010:80"
